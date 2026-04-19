@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>zh_TW</string>
+	<key>CFBundleDisplayName</key>
+	<string>LifePrep</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundlePackageType</key>
+	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>LifePrep 使用藍牙在無網路環境下與附近的裝置傳送訊息。</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>LifePrep 使用藍牙連接附近的裝置進行離線通訊。</string>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>LifePrep 使用本地網路與附近的裝置進行點對點通訊。</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>LifePrep 需要麥克風權限進行語音通話。</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>LifePrep 需要相片庫存取權限以分享圖片。</string>
+	<key>NSCameraUsageDescription</key>
+	<string>LifePrep 需要相機權限以拍攝並分享照片。</string>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<true/>
+	</dict>
+	<key>UILaunchScreen</key>
+	<dict/>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_lifeprep._tcp</string>
+		<string>_lifeprep._udp</string>
+	</array>
+</dict>
+</plist>
