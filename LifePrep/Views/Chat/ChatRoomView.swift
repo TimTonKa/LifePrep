@@ -68,11 +68,8 @@ struct ChatRoomView: View {
 
     private var inputBar: some View {
         HStack(spacing: 12) {
-            PhotosPicker(selection: $selectedPhotoItem, matching: .images) {
-                Image(systemName: "photo")
-                    .font(.title3)
-                    .foregroundStyle(.secondary)
-            }
+            // Image sharing requires Firebase Storage (Blaze plan)
+            // PhotosPicker(selection: $selectedPhotoItem, matching: .images) { ... }
 
             TextField("訊息…", text: $messageText, axis: .vertical)
                 .textFieldStyle(.roundedBorder)

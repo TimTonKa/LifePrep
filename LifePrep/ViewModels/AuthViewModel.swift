@@ -68,15 +68,18 @@ final class AuthViewModel: ObservableObject {
     }
 
     private func localizedAuthError(_ error: Error) -> String {
-        let code = AuthErrorCode(_nsError: error as NSError)
-        switch code.code {
-        case .invalidEmail: return "電子郵件格式不正確"
-        case .weakPassword: return "密碼至少需要 6 個字元"
-        case .emailAlreadyInUse: return "此電子郵件已被使用"
-        case .userNotFound: return "找不到此帳號"
-        case .wrongPassword: return "密碼錯誤"
-        case .networkError: return "網路連線錯誤，請稍後再試"
-        default: return error.localizedDescription
+        let code = (error as NSError).code
+        switch AuthErrorCode(rawValue: code) {
+        case .invalidEmail:       return "電子郵件格式不正確"
+        case .weakPassword:       return "密碼至少需要 6 個字元"
+        case .emailAlreadyInUse:  return "此電子郵件已被使用"
+        case .userNotFound:       return "找不到此帳號"
+        case .wrongPassword:      return "密碼錯誤"
+        case .invalidCredential:  return "電子郵件或密碼錯誤"
+        case .networkError:       return "網路連線錯誤，請稍後再試"
+        case .tooManyRequests:    return "嘗試次數過多，請稍後再試"
+        case .userDisabled:       return "此帳號已被停用"
+        default:                  return error.localizedDescription
         }
     }
 }

@@ -6,6 +6,7 @@ struct AuthView: View {
     @State private var email = ""
     @State private var password = ""
     @State private var name = ""
+    @State private var isPasswordVisible = false
 
     var body: some View {
         NavigationStack {
@@ -41,8 +42,28 @@ struct AuthView: View {
                         .autocapitalization(.none)
                         .autocorrectionDisabled()
 
-                    SecureField("密碼（至少 6 位）", text: $password)
-                        .textFieldStyle(.roundedBorder)
+                    HStack {
+                        Group {
+                            if isPasswordVisible {
+                                TextField("密碼（至少 6 位）", text: $password)
+                                    .autocorrectionDisabled()
+                                    .autocapitalization(.none)
+                            } else {
+                                SecureField("密碼（至少 6 位）", text: $password)
+                            }
+                        }
+                        Button {
+                            isPasswordVisible.toggle()
+                        } label: {
+                            Image(systemName: isPasswordVisible ? "eye.slash" : "eye")
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 8)
+                    .background(Color(.systemBackground))
+                    .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color(.systemGray4)))
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
 
                     if let error = authVM.errorMessage {
                         Text(error)

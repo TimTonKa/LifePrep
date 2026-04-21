@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0ED01B492F964FCB006B79A4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0ED01B482F964FCB006B79A4 /* GoogleService-Info.plist */; };
 		116483F6D287927D6E0C0A17 /* ContentUpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8009D63DA489F0C3BA2919DC /* ContentUpdateService.swift */; };
 		15891289369BC71E575FFB6D /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB701F7EC33C880AB7EC8E76 /* AuthView.swift */; };
 		16CCFA73831EE4A1850FB888 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 5790A3BFDFB59A31761ECAD5 /* FirebaseStorage */; };
@@ -33,7 +34,6 @@
 		E7B658F20FC5F2C0BC8B2B99 /* VoiceCallViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7DA2AC5778CC003A6D44E /* VoiceCallViewModel.swift */; };
 		EA8EA519DF6099F9F35DD656 /* ChatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BDDAA9952902F2025A60DD /* ChatListView.swift */; };
 		ECFD7812CB033B874CAE121C /* FirebaseChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D2A597C2D309D06E2B2FF7 /* FirebaseChatService.swift */; };
-		F1AF65D57EA0F327987508B1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BDF14AC80CFD86D3EE195A9 /* GoogleService-Info.plist */; };
 		F4977C0DBF4E1CE999FDA6C4 /* BluetoothViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAC868C6DBDB21BB9D8F439 /* BluetoothViewModel.swift */; };
 		F63C4D4D6E1E2B85EFA0F0BF /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA25843F2AFF19B3AC628B9F /* AuthViewModel.swift */; };
 		FB8D93F887BDC290B913723A /* survival_guide.json in Resources */ = {isa = PBXBuildFile; fileRef = 047EA5C32D4FC5F9FC28F10D /* survival_guide.json */; };
@@ -45,7 +45,8 @@
 		047EA5C32D4FC5F9FC28F10D /* survival_guide.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = survival_guide.json; sourceTree = "<group>"; };
 		05B1086C0029E8F052A9540F /* GuideHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideHomeView.swift; sourceTree = "<group>"; };
 		08D2A597C2D309D06E2B2FF7 /* FirebaseChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseChatService.swift; sourceTree = "<group>"; };
-		15169064935C4FCC6ACDC48B /* LifePrep.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = LifePrep.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0ED01B482F964FCB006B79A4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		15169064935C4FCC6ACDC48B /* LifePrep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LifePrep.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		183C8EB2C9B669492193FBC0 /* ChatModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModels.swift; sourceTree = "<group>"; };
 		26F7DA2AC5778CC003A6D44E /* VoiceCallViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceCallViewModel.swift; sourceTree = "<group>"; };
 		30DA241D506A40CA96DAB025 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,7 +54,6 @@
 		39E99B320F4C1F4EA6415330 /* ChatRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomView.swift; sourceTree = "<group>"; };
 		49219C4453969E64822BC533 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		56FF00987E8E4C7F5389997D /* MultipeerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipeerService.swift; sourceTree = "<group>"; };
-		5BDF14AC80CFD86D3EE195A9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5D05DCD9B6EF7299D35369D5 /* GuideModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideModels.swift; sourceTree = "<group>"; };
 		5F67E626F0EE4F2BFB230C4B /* ItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailView.swift; sourceTree = "<group>"; };
 		610CFD0779DD9C735E8B3640 /* VoiceCallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceCallView.swift; sourceTree = "<group>"; };
@@ -217,7 +217,7 @@
 				02D20C2C6E27C0365F48DDA3 /* Services */,
 				8EB3FB5FA9D2ACA35717F027 /* ViewModels */,
 				A7919BB8DDC38207DD6E794D /* Views */,
-				5BDF14AC80CFD86D3EE195A9 /* GoogleService-Info.plist */,
+				0ED01B482F964FCB006B79A4 /* GoogleService-Info.plist */,
 				D13B1361E49A4B082D8CB97A /* Info.plist */,
 			);
 			path = LifePrep;
@@ -267,7 +267,6 @@
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					FEE73066108CA04A81035653 = {
-						DevelopmentTeam = "";
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -300,7 +299,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E136B39E1F02F6F260EDC6D3 /* Assets.xcassets in Resources */,
-				F1AF65D57EA0F327987508B1 /* GoogleService-Info.plist in Resources */,
+				0ED01B492F964FCB006B79A4 /* GoogleService-Info.plist in Resources */,
 				FB8D93F887BDC290B913723A /* survival_guide.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -469,7 +468,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5B9M6SMCXM;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = LifePrep/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -492,7 +491,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5B9M6SMCXM;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = LifePrep/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
