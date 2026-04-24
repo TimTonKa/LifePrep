@@ -9,7 +9,7 @@ final class GuideViewModel: ObservableObject {
     @Published var updateError: String?
     @Published var updateMessage: String?
 
-    private let context: ModelContext
+    var context: ModelContext
 
     init(context: ModelContext) {
         self.context = context

@@ -14,7 +14,7 @@ final class BluetoothViewModel: ObservableObject {
     let multipeerService: MultipeerService
     private let audioService = AudioStreamingService()
     private var cancellables = Set<AnyCancellable>()
-    private let context: ModelContext
+    var context: ModelContext
     private let roomId: String = "bluetooth-local"
 
     init(displayName: String, context: ModelContext) {

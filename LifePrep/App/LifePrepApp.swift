@@ -60,7 +60,9 @@ struct ContentViewWrapper: View {
     var body: some View {
         InnerContentView(guideVM: guideVM, chatVM: chatVM, btVM: btVM, callVM: callVM)
             .onAppear {
-                // Re-assign context after environment is available
+                // Switch from the temporary init-time context to the shared app-lifetime context
+                guideVM.context = modelContext
+                btVM.context = modelContext
                 guideVM.seedIfNeeded()
             }
     }
