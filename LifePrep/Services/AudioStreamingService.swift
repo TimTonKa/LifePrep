@@ -17,13 +17,10 @@ final class AudioStreamingService: NSObject, ObservableObject {
     }
 
     private func setupAudioEngine() {
-        let inputNode = audioEngine.inputNode
-        audioFormat = inputNode.outputFormat(forBus: 0)
-
         audioEngine.attach(playerNode)
-        if let format = audioFormat {
-            audioEngine.connect(playerNode, to: audioEngine.mainMixerNode, format: format)
-        }
+        // Use nil format so AVAudioEngine resolves the format after the session is active.
+        // Passing inputNode.outputFormat here crashes because sampleRate is 0 before session setup.
+        audioEngine.connect(playerNode, to: audioEngine.mainMixerNode, format: nil)
     }
 
     func startCapture() {
@@ -35,6 +32,8 @@ final class AudioStreamingService: NSObject, ObservableObject {
 
             let inputNode = audioEngine.inputNode
             let format = inputNode.outputFormat(forBus: 0)
+            audioFormat = format
+
             inputNode.installTap(onBus: 0, bufferSize: 1024, format: format) { [weak self] buffer, _ in
                 self?.processAudioBuffer(buffer)
             }
