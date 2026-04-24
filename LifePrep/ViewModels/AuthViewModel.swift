@@ -77,7 +77,11 @@ final class AuthViewModel: ObservableObject {
             do {
                 try await FirebaseChatService.shared.deleteUserData(userId: user.uid)
                 try await user.delete()
-                await MainActor.run { self.isDeletingAccount = false }
+                await MainActor.run {
+                    self.currentUser = nil
+                    self.isLoggedIn = false
+                    self.isDeletingAccount = false
+                }
             } catch let error as NSError {
                 let msg: String
                 if AuthErrorCode(rawValue: error.code) == .requiresRecentLogin {
