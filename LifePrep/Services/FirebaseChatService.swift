@@ -97,6 +97,39 @@ final class FirebaseChatService {
                 onUpdate(messages)
             }
     }
+
+    // MARK: - Account Deletion
+
+    func deleteUserData(userId: String) async throws {
+        let roomsSnapshot = try await db.collection("chatRooms")
+            .whereField("memberIds", arrayContains: userId)
+            .getDocuments()
+
+        for doc in roomsSnapshot.documents {
+            var memberIds = doc.data()["memberIds"] as? [String] ?? []
+            var memberNames = doc.data()["memberNames"] as? [String: String] ?? [:]
+            memberIds.removeAll { $0 == userId }
+            memberNames.removeValue(forKey: userId)
+
+            if memberIds.isEmpty {
+                let msgs = try await doc.reference.collection("messages").getDocuments()
+                for msg in msgs.documents { try await msg.reference.delete() }
+                try await doc.reference.delete()
+            } else {
+                try await doc.reference.updateData([
+                    "memberIds": memberIds,
+                    "memberNames": memberNames
+                ])
+            }
+        }
+
+        let callsSnapshot = try await db.collection("calls")
+            .whereField("callerId", isEqualTo: userId)
+            .getDocuments()
+        for callDoc in callsSnapshot.documents {
+            try await callDoc.reference.delete()
+        }
+    }
 }
 
 // MARK: - Firestore serialization helpers

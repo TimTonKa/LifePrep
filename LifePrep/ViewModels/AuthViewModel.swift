@@ -6,6 +6,8 @@ final class AuthViewModel: ObservableObject {
     @Published var isLoggedIn: Bool = false
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
+    @Published var isDeletingAccount: Bool = false
+    @Published var deleteAccountError: String?
 
     private var handle: AuthStateDidChangeListenerHandle?
 
@@ -65,6 +67,30 @@ final class AuthViewModel: ObservableObject {
 
     func logout() {
         try? Auth.auth().signOut()
+    }
+
+    func deleteAccount() {
+        guard let user = Auth.auth().currentUser else { return }
+        isDeletingAccount = true
+        deleteAccountError = nil
+        Task {
+            do {
+                try await FirebaseChatService.shared.deleteUserData(userId: user.uid)
+                try await user.delete()
+                await MainActor.run { self.isDeletingAccount = false }
+            } catch let error as NSError {
+                let msg: String
+                if AuthErrorCode(rawValue: error.code) == .requiresRecentLogin {
+                    msg = "為了安全，請先登出後重新登入，再執行刪除帳號"
+                } else {
+                    msg = "刪除帳號失敗，請稍後再試"
+                }
+                await MainActor.run {
+                    self.deleteAccountError = msg
+                    self.isDeletingAccount = false
+                }
+            }
+        }
     }
 
     private func localizedAuthError(_ error: Error) -> String {

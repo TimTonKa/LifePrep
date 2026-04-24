@@ -7,6 +7,8 @@ struct SettingsView: View {
     @Environment(\.modelContext) private var modelContext
     @State private var showLogoutAlert = false
     @State private var showClearAlert = false
+    @State private var showDeleteAlert = false
+    @State private var showDeleteToast = false
 
     var body: some View {
         NavigationStack {
@@ -28,6 +30,33 @@ struct SettingsView: View {
                 Button("取消", role: .cancel) {}
             } message: {
                 Text("將刪除所有本地儲存的生存指南與藍牙訊息紀錄。此操作無法復原。")
+            }
+            .alert("刪除帳號", isPresented: $showDeleteAlert) {
+                Button("永久刪除", role: .destructive) { authVM.deleteAccount() }
+                Button("取消", role: .cancel) {}
+            } message: {
+                Text("帳號與所有雲端資料將永久刪除，此操作無法復原。\n\n你可以用相同的電子郵件重新註冊。")
+            }
+            .onChange(of: authVM.deleteAccountError) { _, error in
+                guard error != nil else { return }
+                withAnimation { showDeleteToast = true }
+                Task {
+                    try? await Task.sleep(for: .seconds(3))
+                    withAnimation { showDeleteToast = false }
+                }
+            }
+            .overlay(alignment: .bottom) {
+                if showDeleteToast, let msg = authVM.deleteAccountError {
+                    Text(msg)
+                        .font(.subheadline)
+                        .foregroundStyle(.white)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 12)
+                        .background(Color.black.opacity(0.82), in: Capsule())
+                        .padding(.bottom, 36)
+                        .transition(.move(edge: .bottom).combined(with: .opacity))
+                }
             }
         }
     }
@@ -128,8 +157,21 @@ struct SettingsView: View {
     private var dangerZone: some View {
         Section {
             Button("清除所有本地資料", role: .destructive) { showClearAlert = true }
+            Button {
+                showDeleteAlert = true
+            } label: {
+                HStack {
+                    Text("刪除帳號")
+                    Spacer()
+                    if authVM.isDeletingAccount {
+                        ProgressView().scaleEffect(0.8)
+                    }
+                }
+            }
+            .foregroundStyle(.red)
+            .disabled(authVM.isDeletingAccount)
         } footer: {
-            Text("清除本地資料後，App 重啟時將自動重新載入內建的基本資料。")
+            Text("清除本地資料後，App 重啟時將自動重新載入內建的基本資料。刪除帳號將永久移除帳號與所有雲端資料，但可以用相同 Email 重新註冊。")
         }
     }
 
