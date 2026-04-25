@@ -50,7 +50,14 @@ final class ShelterViewModel: NSObject, ObservableObject {
         errorMessage = nil
         Task {
             do {
-                let count = try await ShelterService.shared.fetchAndStore(context: context)
+                // Network + parsing runs off main actor; returns plain objects with no context attached
+                let shelters = try await ShelterService.shared.fetchShelterData()
+
+                // Back on @MainActor — safe to touch ModelContext
+                try context.delete(model: Shelter.self)
+                for shelter in shelters { context.insert(shelter) }
+                try context.save()
+
                 let now = Date()
                 UserDefaults.standard.set(now, forKey: "shelterLastUpdated")
                 self.lastUpdated = now
@@ -58,7 +65,7 @@ final class ShelterViewModel: NSObject, ObservableObject {
                 if let loc = userLocation {
                     refreshNearbyShelters(from: CLLocation(latitude: loc.latitude, longitude: loc.longitude))
                 }
-                print("[Shelter] Loaded \(count) shelters")
+                print("[Shelter] Loaded \(shelters.count) shelters")
             } catch {
                 self.errorMessage = error.localizedDescription
                 self.isLoading = false

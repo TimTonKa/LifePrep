@@ -7,7 +7,9 @@ final class ShelterService {
     // 內政部消防署 — 避難收容處所點位 (全台 ~6,000 筆)
     private let csvURL = URL(string: "https://opdadm.moi.gov.tw/api/v1/no-auth/resource/api/dataset/ED6CF735-6C03-4573-A882-72C1BEC799CB/resource/54550E2F-4567-4C8F-BD2E-E54E9D0386B8/download")!
 
-    func fetchAndStore(context: ModelContext) async throws -> Int {
+    // Returns parsed Shelter objects without touching any ModelContext.
+    // The caller (on @MainActor) is responsible for inserting into SwiftData.
+    func fetchShelterData() async throws -> [Shelter] {
         let (data, _) = try await URLSession.shared.data(from: csvURL)
 
         var csv = String(data: data, encoding: .utf8)
@@ -16,17 +18,11 @@ final class ShelterService {
             throw ShelterError.invalidEncoding
         }
 
-        // Strip UTF-8 BOM if present
         if csvString.hasPrefix("\u{FEFF}") { csvString.removeFirst() }
 
         let shelters = parseCSV(csvString)
         guard !shelters.isEmpty else { throw ShelterError.emptyData }
-
-        try context.delete(model: Shelter.self)
-        for shelter in shelters { context.insert(shelter) }
-        try context.save()
-
-        return shelters.count
+        return shelters
     }
 
     // CSV columns (0-indexed):
