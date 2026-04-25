@@ -148,9 +148,6 @@ struct SettingsView: View {
                 Text(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0")
                     .foregroundStyle(.secondary)
             }
-            Link(destination: URL(string: "https://github.com/TimTonKa/LifePrep")!) {
-                Label("GitHub 原始碼", systemImage: "chevron.left.forwardslash.chevron.right")
-            }
         }
     }
 
