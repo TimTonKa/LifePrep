@@ -129,12 +129,6 @@ struct ShelterMapView: View {
             }
             .disabled(vm.isLoading)
         }
-        ToolbarItem(placement: .topBarLeading) {
-            if let date = vm.lastUpdated {
-                Text(date.formatted(date: .abbreviated, time: .omitted))
-                    .font(.caption).foregroundStyle(.secondary)
-            }
-        }
     }
 }
 

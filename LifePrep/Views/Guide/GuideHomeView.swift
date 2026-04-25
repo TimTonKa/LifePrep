@@ -55,13 +55,6 @@ struct GuideHomeView: View {
                         }
                     }
                 }
-                ToolbarItem(placement: .topBarLeading) {
-                    if let date = guideVM.lastUpdated {
-                        Text(date.formatted(.relative(presentation: .named)))
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                    }
-                }
             }
             .alert("更新失敗", isPresented: .constant(guideVM.updateError != nil)) {
                 Button("確定") { guideVM.updateError = nil }
