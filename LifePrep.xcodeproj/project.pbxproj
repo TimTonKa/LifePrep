@@ -25,6 +25,11 @@
 		9E07FECC297EA11F46612D97 /* GuideHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B1086C0029E8F052A9540F /* GuideHomeView.swift */; };
 		A047E0C62D7C482C0A5E8454 /* ChatModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C8EB2C9B669492193FBC0 /* ChatModels.swift */; };
 		A1757D0FD887A7D1C5CC7891 /* ItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F67E626F0EE4F2BFB230C4B /* ItemDetailView.swift */; };
+		A52156582F9C8D4A00E26E3B /* ShelterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52156572F9C8D4A00E26E3B /* ShelterModel.swift */; };
+		A521565A2F9C8D8600E26E3B /* ShelterMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52156592F9C8D8600E26E3B /* ShelterMapView.swift */; };
+		A521565C2F9C8DB300E26E3B /* ShelterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A521565B2F9C8DB300E26E3B /* ShelterViewModel.swift */; };
+		A521565E2F9C8DD600E26E3B /* ShelterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A521565D2F9C8DD600E26E3B /* ShelterService.swift */; };
+		A5649D762F9C9E3C00684D4D /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5649D752F9C9E3C00684D4D /* SplashView.swift */; };
 		C097EEDC895635903945852B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49219C4453969E64822BC533 /* SettingsView.swift */; };
 		C9C8BB65A990E0760854DA2C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = DAFC6EBBC0A59CF937DBD32B /* FirebaseFirestore */; };
 		CF3B408A1BCD6365EEBCBFEB /* ChatRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E99B320F4C1F4EA6415330 /* ChatRoomView.swift */; };
@@ -62,6 +67,11 @@
 		7C482BA0F4E573FA02DD53FF /* WebRTCSignalingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRTCSignalingService.swift; sourceTree = "<group>"; };
 		7DAC868C6DBDB21BB9D8F439 /* BluetoothViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothViewModel.swift; sourceTree = "<group>"; };
 		8009D63DA489F0C3BA2919DC /* ContentUpdateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentUpdateService.swift; sourceTree = "<group>"; };
+		A52156572F9C8D4A00E26E3B /* ShelterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelterModel.swift; sourceTree = "<group>"; };
+		A52156592F9C8D8600E26E3B /* ShelterMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelterMapView.swift; sourceTree = "<group>"; };
+		A521565B2F9C8DB300E26E3B /* ShelterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelterViewModel.swift; sourceTree = "<group>"; };
+		A521565D2F9C8DD600E26E3B /* ShelterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelterService.swift; sourceTree = "<group>"; };
+		A5649D752F9C9E3C00684D4D /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		AA25843F2AFF19B3AC628B9F /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		BB701F7EC33C880AB7EC8E76 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		C47BED5D2E13687DA0D77070 /* GuideViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewModel.swift; sourceTree = "<group>"; };
@@ -94,6 +104,7 @@
 				56FF00987E8E4C7F5389997D /* MultipeerService.swift */,
 				02D6AB9E39EA52A240F1E5D4 /* NetworkMonitor.swift */,
 				7C482BA0F4E573FA02DD53FF /* WebRTCSignalingService.swift */,
+				A521565D2F9C8DD600E26E3B /* ShelterService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -126,6 +137,7 @@
 		4366D23C44177C31152BA0CA /* Guide */ = {
 			isa = PBXGroup;
 			children = (
+				A52156592F9C8D8600E26E3B /* ShelterMapView.swift */,
 				C67F2F9EAA9869A72496E538 /* CategoryDetailView.swift */,
 				05B1086C0029E8F052A9540F /* GuideHomeView.swift */,
 				5F67E626F0EE4F2BFB230C4B /* ItemDetailView.swift */,
@@ -160,6 +172,7 @@
 		8EB3FB5FA9D2ACA35717F027 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				A521565B2F9C8DB300E26E3B /* ShelterViewModel.swift */,
 				AA25843F2AFF19B3AC628B9F /* AuthViewModel.swift */,
 				7DAC868C6DBDB21BB9D8F439 /* BluetoothViewModel.swift */,
 				D12A73592C59522752F9B1B0 /* ChatViewModel.swift */,
@@ -186,6 +199,7 @@
 				4366D23C44177C31152BA0CA /* Guide */,
 				0FCF52F7C26FBA4054BFBC7A /* Settings */,
 				6DB9A70DC3FE187EE60DE113 /* ContentView.swift */,
+				A5649D752F9C9E3C00684D4D /* SplashView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -226,6 +240,7 @@
 		DA35DC1D17E4B19DF240CAAD /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A52156572F9C8D4A00E26E3B /* ShelterModel.swift */,
 				183C8EB2C9B669492193FBC0 /* ChatModels.swift */,
 				5D05DCD9B6EF7299D35369D5 /* GuideModels.swift */,
 			);
@@ -311,10 +326,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A521565C2F9C8DB300E26E3B /* ShelterViewModel.swift in Sources */,
 				5B1005F3AA905A48B756BA52 /* AudioStreamingService.swift in Sources */,
 				15891289369BC71E575FFB6D /* AuthView.swift in Sources */,
+				A521565E2F9C8DD600E26E3B /* ShelterService.swift in Sources */,
 				F63C4D4D6E1E2B85EFA0F0BF /* AuthViewModel.swift in Sources */,
 				8C354BE589C85D5EE510810E /* BluetoothChatView.swift in Sources */,
+				A52156582F9C8D4A00E26E3B /* ShelterModel.swift in Sources */,
 				F4977C0DBF4E1CE999FDA6C4 /* BluetoothViewModel.swift in Sources */,
 				533DF97180002FC825761DCE /* CategoryDetailView.swift in Sources */,
 				EA8EA519DF6099F9F35DD656 /* ChatListView.swift in Sources */,
@@ -323,6 +341,7 @@
 				1C5527E8DE036FCA5005E1AA /* ChatViewModel.swift in Sources */,
 				116483F6D287927D6E0C0A17 /* ContentUpdateService.swift in Sources */,
 				4221C8DEB6B2252D58A415A1 /* ContentView.swift in Sources */,
+				A521565A2F9C8D8600E26E3B /* ShelterMapView.swift in Sources */,
 				ECFD7812CB033B874CAE121C /* FirebaseChatService.swift in Sources */,
 				9E07FECC297EA11F46612D97 /* GuideHomeView.swift in Sources */,
 				72AF837067CEEFCAC3ED6E3C /* GuideModels.swift in Sources */,
@@ -333,6 +352,7 @@
 				83F2761440361F38446F1266 /* NetworkMonitor.swift in Sources */,
 				C097EEDC895635903945852B /* SettingsView.swift in Sources */,
 				73DC928741648103FFF18E97 /* VoiceCallView.swift in Sources */,
+				A5649D762F9C9E3C00684D4D /* SplashView.swift in Sources */,
 				E7B658F20FC5F2C0BC8B2B99 /* VoiceCallViewModel.swift in Sources */,
 				D61A8292C43D7E77A8483E29 /* WebRTCSignalingService.swift in Sources */,
 			);
