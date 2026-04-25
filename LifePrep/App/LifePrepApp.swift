@@ -12,7 +12,7 @@ struct LifePrepApp: App {
     }
 
     var sharedModelContainer: ModelContainer = {
-        let schema = Schema([GuideCategory.self, GuideItem.self, LocalMessage.self])
+        let schema = Schema([GuideCategory.self, GuideItem.self, LocalMessage.self, Shelter.self])
         let config = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
         do {
             return try ModelContainer(for: schema, configurations: [config])
@@ -49,7 +49,7 @@ struct ContentViewWrapper: View {
 
     init() {
         // Temporary containers — replaced by environment's container after init
-        let tmpContainer = try! ModelContainer(for: GuideCategory.self, GuideItem.self, LocalMessage.self)
+        let tmpContainer = try! ModelContainer(for: GuideCategory.self, GuideItem.self, LocalMessage.self, Shelter.self)
         _guideVM = StateObject(wrappedValue: GuideViewModel(context: tmpContainer.mainContext))
         _btVM = StateObject(wrappedValue: BluetoothViewModel(
             displayName: UIDevice.current.name,

@@ -22,6 +22,8 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>LifePrep 需要定位權限以顯示您附近的緊急避難所位置。</string>
 	<key>NSBluetoothAlwaysUsageDescription</key>
 	<string>LifePrep 使用藍牙在無網路環境下與附近的裝置傳送訊息。</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
