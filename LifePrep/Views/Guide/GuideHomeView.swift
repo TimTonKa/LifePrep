@@ -73,6 +73,14 @@ struct CategoryCardView: View {
         Color(hex: category.colorHex) ?? .green
     }
 
+    /// 包含動態加入的特殊 item（如避難所地圖）
+    private var displayItemCount: Int {
+        let isEvacuation = category.titleZH.contains("撤離") ||
+                           category.titleZH.contains("疏散") ||
+                           category.id.lowercased().contains("evacu")
+        return category.items.count + (isEvacuation ? 1 : 0)
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
@@ -80,7 +88,7 @@ struct CategoryCardView: View {
                     .font(.title2)
                     .foregroundStyle(.white)
                 Spacer()
-                Text("\(category.items.count)")
+                Text("\(displayItemCount)")
                     .font(.caption.bold())
                     .foregroundStyle(.white.opacity(0.8))
             }
