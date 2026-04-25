@@ -23,13 +23,20 @@ struct LifePrepApp: App {
 
     var body: some Scene {
         WindowGroup {
-            Group {
-                if authVM.isLoggedIn {
+            ZStack {
+                if authVM.isCheckingAuth {
+                    SplashView()
+                        .transition(.opacity)
+                } else if authVM.isLoggedIn {
                     ContentViewWrapper()
+                        .transition(.opacity)
                 } else {
                     AuthView()
+                        .transition(.opacity)
                 }
             }
+            .animation(.easeInOut(duration: 0.4), value: authVM.isCheckingAuth)
+            .animation(.easeInOut(duration: 0.4), value: authVM.isLoggedIn)
             .environmentObject(authVM)
             .environmentObject(networkMonitor)
         }

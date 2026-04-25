@@ -4,6 +4,7 @@ import Combine
 final class AuthViewModel: ObservableObject {
     @Published var currentUser: User?
     @Published var isLoggedIn: Bool = false
+    @Published var isCheckingAuth: Bool = true   // true 直到 Firebase 第一次回報狀態
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
     @Published var isDeletingAccount: Bool = false
@@ -16,6 +17,7 @@ final class AuthViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self?.currentUser = user
                 self?.isLoggedIn = user != nil
+                self?.isCheckingAuth = false   // auth 狀態確認完畢，離開 Splash
             }
         }
     }
