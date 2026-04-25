@@ -92,7 +92,7 @@ struct InnerContentView: View {
 
             BluetoothChatView()
                 .environmentObject(btVM)
-                .tabItem { Label("藍牙通訊", systemImage: "bluetooth") }
+                .tabItem { Label("藍牙通訊", systemImage: "antenna.radiowaves.left.and.right") }
                 .tag(2)
 
             SettingsView()
