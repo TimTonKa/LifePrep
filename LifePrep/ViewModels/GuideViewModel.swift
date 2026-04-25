@@ -29,6 +29,20 @@ final class GuideViewModel: ObservableObject {
         }
     }
 
+    /// 啟動時靜默更新：上次更新超過 24 小時才觸發，不顯示錯誤訊息
+    func fetchUpdateIfStale() {
+        let oneDayAgo = Date().addingTimeInterval(-86400)
+        let isStale = lastUpdated.map { $0 < oneDayAgo } ?? true
+        guard isStale else { return }
+        Task {
+            guard let guide = try? await ContentUpdateService.fetchRemoteUpdate() else { return }
+            ContentUpdateService.applyUpdate(guide, context: context)
+            let now = Date()
+            UserDefaults.standard.set(now, forKey: "guideLastUpdated")
+            self.lastUpdated = now
+        }
+    }
+
     func fetchUpdate() {
         guard !isUpdating else { return }
         isUpdating = true

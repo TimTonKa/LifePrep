@@ -64,6 +64,7 @@ struct ContentViewWrapper: View {
                 guideVM.context = modelContext
                 btVM.context = modelContext
                 guideVM.seedIfNeeded()
+                guideVM.fetchUpdateIfStale() // 背景靜默更新，超過 24 小時才觸發
             }
     }
 }
