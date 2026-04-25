@@ -224,6 +224,15 @@
           "tags": ["撤離", "路線", "疏散"],
           "priority": 5,
           "sortOrder": 2
+        },
+        {
+          "id": "bugout-shelter-map",
+          "titleZH": "附近避難所地圖",
+          "summary": "顯示目前位置 5 公里內的緊急避難所，支援導航功能",
+          "content": "",
+          "tags": ["避難所", "地圖", "導航", "feature:shelter-map"],
+          "priority": 5,
+          "sortOrder": 3
         }
       ]
     },

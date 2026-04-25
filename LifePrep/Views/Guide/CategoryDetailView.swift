@@ -11,21 +11,17 @@ struct CategoryDetailView: View {
         return items.filter { $0.titleZH.localizedCaseInsensitiveContains(searchText) }
     }
 
-    // 判斷是否為「緊急撤離」類別（支援名稱異動的情況）
-    private var isEvacuationCategory: Bool {
-        category.titleZH.contains("撤離") || category.titleZH.contains("疏散") || category.id.lowercased().contains("evacu")
-    }
-
     var body: some View {
         List {
             ForEach(sortedItems) { item in
-                NavigationLink(destination: ItemDetailView(item: item)) {
-                    ItemRowView(item: item)
-                }
-            }
-            if isEvacuationCategory && searchText.isEmpty {
-                NavigationLink(destination: ShelterMapView(context: modelContext)) {
-                    ShelterMapRowView()
+                if item.tags.contains("feature:shelter-map") {
+                    NavigationLink(destination: ShelterMapView(context: modelContext)) {
+                        ItemRowView(item: item)
+                    }
+                } else {
+                    NavigationLink(destination: ItemDetailView(item: item)) {
+                        ItemRowView(item: item)
+                    }
                 }
             }
         }
@@ -33,30 +29,6 @@ struct CategoryDetailView: View {
         .navigationTitle(category.titleZH)
         .navigationBarTitleDisplayMode(.large)
         .searchable(text: $searchText, prompt: "搜尋")
-    }
-}
-
-struct ShelterMapRowView: View {
-    var body: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            HStack {
-                Text("附近避難所地圖")
-                    .font(.headline)
-                    .foregroundStyle(.primary)
-                Spacer()
-                Circle().fill(.green).frame(width: 8, height: 8)
-            }
-            Text("顯示目前位置 5 公里內的緊急避難所，支援導航功能")
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-                .lineLimit(2)
-            HStack(spacing: 4) {
-                Image(systemName: "map.fill").font(.caption2)
-                Text("內政部消防署資料").font(.caption2)
-            }
-            .foregroundStyle(.tertiary)
-        }
-        .padding(.vertical, 4)
     }
 }
 
